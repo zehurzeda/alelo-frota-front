@@ -8,6 +8,9 @@ import { VehicleFormComponent } from './pages/vehicle-form/vehicle-form.componen
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MenuOptionComponent } from './components/menu-option/menu-option.component';
+import { CustomInputComponent } from './components/custom-input/custom-input.component';
+import { ButtonComponent } from './components/button/button.component';
+import { ButtonLinkComponent } from './components/button-link/button-link.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +18,10 @@ import { MenuOptionComponent } from './components/menu-option/menu-option.compon
     VehicleListComponent,
     VehicleFormComponent,
     NavBarComponent,
-    MenuOptionComponent
+    MenuOptionComponent,
+    CustomInputComponent,
+    ButtonComponent,
+    ButtonLinkComponent
   ],
   imports: [
     BrowserModule,

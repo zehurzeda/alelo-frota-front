@@ -1,9 +1,18 @@
-<div class="relative min-h-screen flex">
-
+<div class="relative min-h-screen md:flex">
   <app-nav-bar></app-nav-bar>
-  <div class="flex-1 p-10 bg-gray-100 rounded-3xl shadow-3xl" role="main">
-  
+  <div
+    class="
+      md:flex-1
+      md:p-10
+      p-4
+      min-h-screen
+      bg-gray-100
+      md:rounded-3xl
+      shadow-3xl
+      md:z-10
+    "
+    role="main"
+  >
     <router-outlet></router-outlet>
-  
   </div>
 </div>

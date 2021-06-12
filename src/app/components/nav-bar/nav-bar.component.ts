@@ -3,6 +3,7 @@ import {
   faCarSide,
   faChartBar,
   faTachometerAlt,
+  faBars
 } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -14,8 +15,16 @@ export class NavBarComponent implements OnInit {
   faCarSide = faCarSide;
   faChartBar = faChartBar;
   faTachometerAlt = faTachometerAlt;
+  faBars = faBars;
+
+  sideOpened = false;
 
   constructor() {}
 
   ngOnInit(): void {}
+
+  togleSide() {
+    console.log('test')
+    this.sideOpened = !this.sideOpened
+  }
 }

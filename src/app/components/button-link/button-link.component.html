@@ -1,0 +1,14 @@
+<a
+  class="
+    py-4
+    px-6
+    font-medium
+    rounded-lg
+    shadow-3xl
+    focus:outline-none
+  "
+  [ngClass]="['hover:' + hoverColor, color, textColor]"
+  [routerLink]="link"
+>
+  <ng-content></ng-content>
+</a>

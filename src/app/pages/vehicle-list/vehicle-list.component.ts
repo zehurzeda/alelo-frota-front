@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { faSearch, faEdit, faTrashAlt, faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-vehicle-list',
@@ -7,9 +8,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VehicleListComponent implements OnInit {
 
+  faSearch = faSearch;
+  faEdit = faEdit;
+  faTrash = faTrashAlt;
+  faArrowLeft = faArrowLeft;
+  faArrowRight = faArrowRight;
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  nextPage() {
+
+  }
+
+  previousPage() {
+
+  }
+
+  goToPage(pageNumber: number) {
+    
   }
 
 }

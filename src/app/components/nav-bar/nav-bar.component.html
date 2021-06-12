@@ -1,23 +1,54 @@
-<!--sidebar-->
-<div class="text-gray-500 w-64 px-2 py-6">
+<ng-container>
+  <!--navbar-mobile-->
+  <div class="bg-green-700 text-white flex justify-between md:hidden">
+    <a href="#" class="block p-4 font-bold">Alelo Frota</a>
 
-  <!--logo-->
-  <a href="#" class="flex items-center justify-center">
-    <img src="/assets/images/alelo-logo.png" alt="image">
-  </a>
-
-  <!--title-->
-  <span class="flex justify-center text-4xl font-bold py-8">
-    Alelo Frota
-  </span>
-
-  <!--menu-->
-  <div class="flex flex-col justify-center text-xl space-y-2">
-    
-    <menu-option [icon]="faTachometerAlt" title="Dashboard"></menu-option>
-    <menu-option [icon]="faCarSide" title="Vehicle" [selected]=true route="/vehicles"></menu-option>
-    <menu-option [icon]="faChartBar" title="Reports"></menu-option>
-
+    <button class="p-4 focus:outline-none" (click)="togleSide()">
+      <fa-icon class="h-5 w-5" [icon]="faBars"></fa-icon>
+    </button>
   </div>
 
-</div>
+  <!--sidebar-->
+  <div
+    class="
+      text-gray-500
+      w-64
+      px-2
+      py-6
+      absolute
+      inset-y-0
+      left-0
+      transform
+      md:relative
+      md:translate-x-0
+      transition
+      duration-200
+      ease-in-out
+      bg-white
+      md:z-0
+    "
+    [ngClass]="{'-translate-x-full': !sideOpened}"
+  >
+    <!--logo-->
+    <a href="#" class="flex items-center justify-center">
+      <img src="/assets/images/alelo-logo.png" alt="image" />
+    </a>
+
+    <!--title-->
+    <span class="flex justify-center text-4xl font-bold py-8">
+      Alelo Frota
+    </span>
+
+    <!--menu-->
+    <div class="flex flex-col justify-center text-xl space-y-2">
+      <menu-option [icon]="faTachometerAlt" title="Dashboard"></menu-option>
+      <menu-option
+        [icon]="faCarSide"
+        title="Vehicle"
+        [selected]="true"
+        route="/vehicles"
+      ></menu-option>
+      <menu-option [icon]="faChartBar" title="Reports"></menu-option>
+    </div>
+  </div>
+</ng-container>
