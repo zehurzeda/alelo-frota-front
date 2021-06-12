@@ -1,0 +1,23 @@
+<!--sidebar-->
+<div class="text-gray-500 w-64 px-2 py-6">
+
+  <!--logo-->
+  <a href="#" class="flex items-center justify-center">
+    <img src="/assets/images/alelo-logo.png" alt="image">
+  </a>
+
+  <!--title-->
+  <span class="flex justify-center text-4xl font-bold py-8">
+    Alelo Frota
+  </span>
+
+  <!--menu-->
+  <div class="flex flex-col justify-center text-xl space-y-2">
+    
+    <menu-option [icon]="faTachometerAlt" title="Dashboard"></menu-option>
+    <menu-option [icon]="faCarSide" title="Vehicle" [selected]=true route="/vehicles"></menu-option>
+    <menu-option [icon]="faChartBar" title="Reports"></menu-option>
+
+  </div>
+
+</div>
