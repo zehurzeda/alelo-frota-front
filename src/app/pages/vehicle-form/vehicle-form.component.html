@@ -1,1 +1,82 @@
-<p>vehicle-form works!</p>
+<div class="text-neutral-600">
+  <div class="flex space-y-6 justify-center md:justify-start">
+    <span class="text-2xl font-bold">Update Vehicle</span>
+  </div>
+
+  <div class="absolute right-0 invisible md:visible pr-10">
+    <img src="/assets/images/car.png" alt="image" />
+  </div>
+
+  <form action="" class="flex flex-col pt-8 space-y-8 items-center md:items-start">
+    <div class="max-w-lg space-y-8">
+      <div class="flex flex-col w-full">
+        <label class="text-lg font-semibold">Plate (disabled)</label>
+        <app-custom-input placeholder="Insert plate"></app-custom-input>
+      </div>
+  
+      <div class="flex flex-col w-full">
+        <label class="text-lg font-semibold">Model</label>
+        <app-custom-input placeholder="Insert model"></app-custom-input>
+      </div>
+  
+      <div class="flex flex-col w-full">
+        <label class="text-lg font-semibold">Manufacturer</label>
+        <app-custom-input placeholder="Insert Manufacturer"></app-custom-input>
+      </div>
+  
+      <div class="flex flex-col w-full">
+        <label class="text-lg font-semibold">Color</label>
+        <app-custom-input placeholder="Insert color"></app-custom-input>
+      </div>
+  
+      <div class="flex flex-col w-full">
+        <label class="text-lg font-semibold">Status</label>
+        <div class="pt-4 flex flex-row space-x-5">
+          <label class="inline-flex items-center">
+            <input
+              type="radio"
+              class="
+                form-radio
+                text-darkGreen
+                focous:outline-none
+                focus:ring-0
+                h-5
+                w-5
+              "
+              id="active"
+              name="status"
+              value="active"
+            />
+            <span class="ml-3 text-lg">Active</span>
+          </label>
+          <label class="inline-flex items-center">
+            <input
+              type="radio"
+              class="
+                form-radio
+                text-darkGreen
+                focous:outline-none
+                focus:ring-0
+                h-5
+                w-5
+              "
+              id="inactive"
+              name="status"
+              value="inactive"
+            />
+            <span class="ml-3 text-lg">Inactive</span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex space-x-6">
+      <app-button>
+        Reset All
+      </app-button>
+      <app-button color="bg-pink-700" hoverColor="bg-pink-800" textColor="text-white">
+        Save
+      </app-button>
+    </div>
+  </form>
+</div>

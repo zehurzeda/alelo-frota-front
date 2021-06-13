@@ -10,7 +10,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MenuOptionComponent } from './components/menu-option/menu-option.component';
 import { CustomInputComponent } from './components/custom-input/custom-input.component';
 import { ButtonComponent } from './components/button/button.component';
-import { ButtonLinkComponent } from './components/button-link/button-link.component';
+import { ModalComponent } from './components/modal/modal.component';
+import { DeleteConfirmationModalComponent } from './components/delete-confirmation-modal/delete-confirmation-modal.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ButtonLinkComponent } from './components/button-link/button-link.compon
     MenuOptionComponent,
     CustomInputComponent,
     ButtonComponent,
-    ButtonLinkComponent
+    ModalComponent,
+    DeleteConfirmationModalComponent
   ],
   imports: [
     BrowserModule,

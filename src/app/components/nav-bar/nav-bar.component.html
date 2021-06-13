@@ -1,6 +1,6 @@
 <ng-container>
   <!--navbar-mobile-->
-  <div class="bg-green-700 text-white flex justify-between md:hidden">
+  <div class="bg-nav text-neutral-white flex justify-between md:hidden">
     <a href="#" class="block p-4 font-bold">Alelo Frota</a>
 
     <button class="p-4 focus:outline-none" (click)="togleSide()">
@@ -11,7 +11,7 @@
   <!--sidebar-->
   <div
     class="
-      text-gray-500
+      text-neutral-700
       w-64
       px-2
       py-6
@@ -24,7 +24,7 @@
       transition
       duration-200
       ease-in-out
-      bg-white
+      bg-neutral-white
       md:z-0
     "
     [ngClass]="{'-translate-x-full': !sideOpened}"
