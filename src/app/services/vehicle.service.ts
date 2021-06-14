@@ -25,9 +25,22 @@ export class VehicleService {
   }
 
   public deleteVehicle(idVehicle: number): Observable<boolean> {
-    console.log(idVehicle);
     const url = `${this.vehicleUrl}/${idVehicle}`
     return this.http.delete<any>(url);
+  }
+
+  public findById(idVehicle: string): Observable<Vehicle> {
+    const url = `${this.vehicleUrl}/${idVehicle}`;
+    return this.http.get<Vehicle>(url);
+  }
+
+  public save(vehicle: Vehicle): Observable<Vehicle> {
+    return this.http.post<Vehicle>(this.vehicleUrl, vehicle);
+  }
+
+  public edit(idVehicle: string, vehicle: Vehicle): Observable<Vehicle> {
+    const url = `${this.vehicleUrl}/${idVehicle}`;
+    return this.http.put<Vehicle>(url, vehicle);
   }
 
   private getHttpParams(page: Pageable, plate?: string) {

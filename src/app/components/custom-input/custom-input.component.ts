@@ -1,4 +1,6 @@
 import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   forwardRef,
   Input,
@@ -15,6 +17,7 @@ import {
 @Component({
   selector: 'app-custom-input',
   templateUrl: './custom-input.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./custom-input.component.scss'],
   providers: [
     {
@@ -31,11 +34,25 @@ export class CustomInputComponent implements ControlValueAccessor {
   @Input()
   disabled: boolean = false;
 
-  value: any = '';
+  _value: any = '';
   onChange: any = () => {};
   onTouch: any = () => {};
 
-  constructor() {}
+	get value(): any {
+		return this._value;
+	}
+
+	set value(val: any) {
+		this._value = val;
+		this.onChange(val);
+		this.onTouch();
+		this.cd.detectChanges();
+	}
+
+	constructor(
+		private cd: ChangeDetectorRef
+	) {
+	}
 
   registerOnChange(fn: any): void {
     this.onChange = fn;
@@ -51,4 +68,6 @@ export class CustomInputComponent implements ControlValueAccessor {
   writeValue(value: string) {
     this.value = value;
   }
+
+
 }

@@ -7,26 +7,26 @@
     <img src="/assets/images/car.png" alt="image" />
   </div>
 
-  <form action="" class="flex flex-col pt-8 space-y-8 items-center md:items-start">
+  <form [formGroup]="vehicleForm" class="flex flex-col pt-8 space-y-8 items-center md:items-start">
     <div class="max-w-lg space-y-8">
       <div class="flex flex-col w-full">
-        <label class="text-lg font-semibold">Plate (disabled)</label>
-        <app-custom-input placeholder="Insert plate"></app-custom-input>
+        <label class="text-lg font-semibold">Plate {{plateFormDisabled ? '(disabled)' : ''}}</label>
+        <app-custom-input formControlName="plate" placeholder="Insert plate"></app-custom-input>
       </div>
   
       <div class="flex flex-col w-full">
         <label class="text-lg font-semibold">Model</label>
-        <app-custom-input placeholder="Insert model"></app-custom-input>
+        <app-custom-input formControlName="model" placeholder="Insert model"></app-custom-input>
       </div>
   
       <div class="flex flex-col w-full">
         <label class="text-lg font-semibold">Manufacturer</label>
-        <app-custom-input placeholder="Insert Manufacturer"></app-custom-input>
+        <app-custom-input formControlName="manufacturer" placeholder="Insert Manufacturer"></app-custom-input>
       </div>
   
       <div class="flex flex-col w-full">
         <label class="text-lg font-semibold">Color</label>
-        <app-custom-input placeholder="Insert color"></app-custom-input>
+        <app-custom-input formControlName="color" placeholder="Insert color"></app-custom-input>
       </div>
   
       <div class="flex flex-col w-full">
@@ -45,7 +45,8 @@
               "
               id="active"
               name="status"
-              value="active"
+              [value]="true"
+              formControlName="status"
             />
             <span class="ml-3 text-lg">Active</span>
           </label>
@@ -62,7 +63,8 @@
               "
               id="inactive"
               name="status"
-              value="inactive"
+              [value]="false"
+              formControlName="status"
             />
             <span class="ml-3 text-lg">Inactive</span>
           </label>
@@ -71,10 +73,10 @@
     </div>
 
     <div class="flex space-x-6">
-      <app-button>
+      <app-button color="bg-neutral-white" hoverColor="bg-neutral-100" (click)="resetForm()">
         Reset All
       </app-button>
-      <app-button color="bg-pink-700" hoverColor="bg-pink-800" textColor="text-white">
+      <app-button color="bg-pink-700" hoverColor="bg-pink-800" textColor="text-white" (click)="submitForm()">
         Save
       </app-button>
     </div>

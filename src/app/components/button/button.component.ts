@@ -24,6 +24,8 @@ export class ButtonComponent implements OnInit {
   }
 
   onClickButton(event: MouseEvent | undefined) {
+    event?.stopPropagation();
+    event?.preventDefault();
     this.click.emit(event);
   }
 
