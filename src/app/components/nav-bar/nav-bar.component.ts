@@ -24,7 +24,6 @@ export class NavBarComponent implements OnInit {
   ngOnInit(): void {}
 
   togleSide() {
-    console.log('test')
     this.sideOpened = !this.sideOpened
   }
 }

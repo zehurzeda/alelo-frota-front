@@ -32,10 +32,6 @@ export class VehicleFormComponent implements OnInit {
   constructor(private service: VehicleService, private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit(): void {
-    this.vehicleForm.valueChanges.subscribe((value) =>
-      console.log(this.vehicleForm.getRawValue())
-    );
-
     this.route.params
       .pipe(
         map((params) => params['id']),

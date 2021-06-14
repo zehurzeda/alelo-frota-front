@@ -89,17 +89,17 @@ export class VehicleListComponent implements OnInit {
 
   nextPage() {
     this.page.pageNumber = this.page.pageNumber + 1;
-    this.listAllVehicles();
+    this.listAllVehicles().subscribe();
   }
 
   previousPage() {
     this.page.pageNumber = this.page.pageNumber - 1;
-    this.listAllVehicles();
+    this.listAllVehicles().subscribe();
   }
 
   goToPage(pageNumber: number) {
     this.page.pageNumber = pageNumber;
-    this.listAllVehicles();
+    this.listAllVehicles().subscribe();
   }
 
   openConfirmationDelete(idVehicle: number) {
