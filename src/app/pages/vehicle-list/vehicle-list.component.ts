@@ -27,7 +27,7 @@ export class VehicleListComponent implements OnInit {
 
   isLoading: boolean = true;
   page: Pageable = {
-    pageSize: 1,
+    pageSize: 10,
     pageNumber: 1,
   };
   subscription: Subscription = new Subscription();
