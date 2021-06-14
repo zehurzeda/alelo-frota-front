@@ -1,27 +1,43 @@
-# AleloFrotaTest
+# Avaliação técnica VEK
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.3.
+Este projeto se trata da parte Frontend da avaliação técnica para o processo seletivo da empresa Alelo
 
-## Development server
+### Pre-requisitos
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+É necessário ter instalado as seguintes ferramentas para rodar o projeto:
 
-## Code scaffolding
+* [Docker](https://www.docker.com/)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Este projeto depende da sua parte Backend que se encontra no seguinte repositório:
+* [Backend](https://github.com/zehurzeda/alelo-frota-back)
 
-## Build
+### Rodando o projeto
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Para rodar o projeto somente é necessário possuir o docker portanto os seguintes passos são necessários:
 
-## Running unit tests
+#### Imagem
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Na raiz do projeto rodar o seguinte comando para criar a imagem docker:
 
-## Running end-to-end tests
+```
+docker build -t alelo/frota-front-image .
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+#### Container
 
-## Further help
+Na raiz do preojto rodar o seguinte comando para criar o container docker:
+```
+docker run --name frota-front-container -d -p 4200:80 alelo/frota-front-image
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Pronto temos a aplicação online!!
+
+## Acessando a aplicação
+
+Agora que nossa aplicação está online podemos acessa-la pelo link:
+
+[localhost:4200](http://localhost:4200)
+
+Também foi feito o deploy da aplicação no Heroku, podemos acessa-la pelo link:
+
+[heroku-app](https://alelo-frota.herokuapp.com/)
