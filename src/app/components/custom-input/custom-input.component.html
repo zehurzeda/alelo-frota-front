@@ -10,4 +10,8 @@
   "
   [placeholder]="placeholder"
   type="text"
+  [ngModel]="value"
+  [disabled]="disabled"
+  (ngModelChange)="onChange($event)"
+  (blur)="onTouch()"
 />
