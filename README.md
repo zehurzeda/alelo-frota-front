@@ -40,4 +40,4 @@ Agora que nossa aplicação está online podemos acessa-la pelo link:
 
 Também foi feito o deploy da aplicação no Heroku, podemos acessa-la pelo link:
 
-[heroku-app](https://alelo-frota.herokuapp.com/)
+[heroku-app](https://alelo-frota.herokuapp.com/vehicles)
