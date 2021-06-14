@@ -8,7 +8,7 @@
   </div>
 
   <form [formGroup]="vehicleForm" class="flex flex-col pt-8 space-y-8 items-center md:items-start">
-    <div class="max-w-lg space-y-8">
+    <div class="flex-1 md:w-60 lg:w-96 space-y-8">
       <div class="flex flex-col w-full">
         <label class="text-lg font-semibold">Plate {{plateFormDisabled ? '(disabled)' : ''}}</label>
         <app-custom-input formControlName="plate" placeholder="Insert plate"></app-custom-input>
@@ -72,11 +72,11 @@
       </div>
     </div>
 
-    <div class="flex space-x-6">
-      <app-button color="bg-neutral-white" hoverColor="bg-neutral-100" (click)="resetForm()">
+    <div class="md:w-60 lg:w-96 flex justify-between space-x-6">
+      <app-button class="lg:w-40 md:w-32" color="bg-neutral-white" hoverColor="bg-neutral-100" (click)="resetForm()">
         Reset All
       </app-button>
-      <app-button color="bg-pink-700" hoverColor="bg-pink-800" textColor="text-white" (click)="submitForm()">
+      <app-button class="lg:w-40 md:w-32" color="bg-pink-700" hoverColor="bg-pink-800" textColor="text-white" (click)="submitForm()">
         Save
       </app-button>
     </div>
