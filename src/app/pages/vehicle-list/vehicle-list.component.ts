@@ -1,5 +1,6 @@
+import { DeleteConfirmationModalComponent } from './../../components/delete-confirmation-modal/delete-confirmation-modal.component';
 import { Vehicle } from './../../model/vehicle.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {
   faSearch,
   faEdit,
@@ -7,11 +8,11 @@ import {
   faArrowLeft,
   faArrowRight,
 } from '@fortawesome/free-solid-svg-icons';
-import { interval, Subscription } from 'rxjs';
+import { interval, Subscription, throwError } from 'rxjs';
 import { Pageable } from 'src/app/model/pageable-response.model';
 import { VehicleService } from 'src/app/services/vehicle.service';
 import { FormControl } from '@angular/forms';
-import { debounceTime, tap } from 'rxjs/operators';
+import { catchError, debounceTime, switchMap, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-vehicle-list',
@@ -19,6 +20,9 @@ import { debounceTime, tap } from 'rxjs/operators';
   styleUrls: ['./vehicle-list.component.scss'],
 })
 export class VehicleListComponent implements OnInit {
+  @ViewChild(DeleteConfirmationModalComponent)
+  confirmationModal!: DeleteConfirmationModalComponent;
+
   faSearch = faSearch;
   faEdit = faEdit;
   faTrash = faTrashAlt;
@@ -38,23 +42,28 @@ export class VehicleListComponent implements OnInit {
   first: boolean = true;
   filter!: string;
 
+  idVehicleToDelete!: number;
+
   plateSearch = new FormControl('');
+
+  errorMessage!: string;
+  deleteStatus!: string;
 
   constructor(private service: VehicleService) {}
 
   ngOnInit(): void {
     this.isLoading = true;
-    this.listAllVehicles();
+    this.subscription.add(this.listAllVehicles().subscribe());
 
     this.subscription.add(
-      this.plateSearch.valueChanges.pipe(
-        tap(() => this.isLoading = true),
-        debounceTime(1000)
-      ).subscribe(value => {
-        this.filter = value;
-        
-        this.listAllVehicles();
-      })
+      this.plateSearch.valueChanges
+        .pipe(
+          tap(() => (this.isLoading = true)),
+          debounceTime(1000),
+          tap((value) => (this.filter = value)),
+          switchMap(() => this.listAllVehicles())
+        )
+        .subscribe()
     );
   }
 
@@ -63,13 +72,19 @@ export class VehicleListComponent implements OnInit {
   }
 
   listAllVehicles() {
-    console.log(this.filter);
-    this.service.listAllVehicles(this.page, this.filter).subscribe((res) => {
-      this.vehicles = res.content;
-      this.totalPages = res.totalPages;
-      this.first = res.first;
-      this.last = res.last;
-    });
+    return this.service.listAllVehicles(this.page, this.filter).pipe(
+      catchError((error) => {
+        this.errorMessage = error.message;
+        console.error('There was an error!', error);
+        return throwError(error);
+      }),
+      tap((res) => {
+        this.vehicles = res.content;
+        this.totalPages = res.totalPages;
+        this.first = res.first;
+        this.last = res.last;
+      })
+    );
   }
 
   nextPage() {
@@ -85,5 +100,25 @@ export class VehicleListComponent implements OnInit {
   goToPage(pageNumber: number) {
     this.page.pageNumber = pageNumber;
     this.listAllVehicles();
+  }
+
+  openConfirmationDelete(idVehicle: number) {
+    this.idVehicleToDelete = idVehicle;
+    this.confirmationModal.toggleModal();
+  }
+
+  deleteVehicle() {
+    this.service
+      .deleteVehicle(this.idVehicleToDelete)
+      .pipe(
+        catchError((error) => {
+          this.errorMessage = error.message;
+          console.error('There was an error!', error);
+          return throwError(error);
+        }),
+        tap(() => (this.deleteStatus = 'Delete successful')),
+        switchMap(() => this.listAllVehicles())
+      )
+      .subscribe();
   }
 }

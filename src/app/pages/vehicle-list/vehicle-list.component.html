@@ -84,7 +84,7 @@
               <a [routerLink]="['/vehicles/' + vehicle.id]" class="focus:outline-none text-neutral-black">
                 <fa-icon class="text-xl" [icon]="faEdit"></fa-icon>
               </a>
-              <button class="focus:outline-none" (click)="deleteModal.toggleModal()">
+              <button class="focus:outline-none" (click)="openConfirmationDelete(vehicle.id!)">
                 <fa-icon
                   class="text-xl text-error"
                   [icon]="faTrash"
@@ -114,4 +114,4 @@
   </div>
 </div>
 
-<app-delete-confirmation-modal #deleteModal></app-delete-confirmation-modal>
+<app-delete-confirmation-modal (confirm)="deleteVehicle()" ></app-delete-confirmation-modal>

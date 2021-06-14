@@ -24,6 +24,12 @@ export class VehicleService {
     });
   }
 
+  public deleteVehicle(idVehicle: number): Observable<boolean> {
+    console.log(idVehicle);
+    const url = `${this.vehicleUrl}/${idVehicle}`
+    return this.http.delete<any>(url);
+  }
+
   private getHttpParams(page: Pageable, plate?: string) {
     let params = new HttpParams()
     .append('page', `${page.pageNumber ? page.pageNumber - 1 : 0}`)
